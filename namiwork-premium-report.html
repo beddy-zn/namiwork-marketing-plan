@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>360纳米Work企业版 · 6个月GTM营销方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A1F14;
+  --bg-2:#0D2B1C;
+  --bg-3:#103828;
+  --surface:rgba(255,255,255,0.04);
+  --surface-2:rgba(255,255,255,0.07);
+  --border:rgba(0,193,139,0.15);
+  --border-strong:rgba(0,193,139,0.35);
+  --text-1:#F0F5F2;
+  --text-2:#A8C4B8;
+  --text-3:#5C7A6E;
+  --green:#00C18B;
+  --green-dim:#006B3C;
+  --gold:#FFC107;
+  --gold-dim:#B8860B;
+  --red:#FF6B6B;
+  --radius:16px;
+  --radius-sm:10px;
+  --serif:'Noto Serif SC',Georgia,serif;
+  --sans:'DM Sans','Noto Sans SC',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--text-1);
+  font-family:var(--sans);
+  line-height:1.8;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* Grain overlay */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* Ambient glow */
+body::after{
+  content:'';
+  position:fixed;
+  top:-30%;
+  right:-20%;
+  width:80vw;
+  height:80vw;
+  background:radial-gradient(circle,rgba(0,193,139,0.06) 0%,transparent 60%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+.container{max-width:900px;margin:0 auto;padding:0 28px}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  bottom:-50%;
+  left:-20%;
+  width:140vw;
+  height:100vh;
+  background:radial-gradient(ellipse,rgba(0,193,139,0.08) 0%,transparent 50%);
+}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--green);
+  text-transform:uppercase;
+  margin-bottom:28px;
+  opacity:0;
+  animation:fadeUp 0.8s 0.2s forwards;
+}
+.hero-eyebrow::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:var(--green);
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(40px,7vw,68px);
+  font-weight:900;
+  line-height:1.1;
+  letter-spacing:-1px;
+  margin-bottom:16px;
+  opacity:0;
+  animation:fadeUp 0.8s 0.4s forwards;
+}
+.hero h1 .accent{
+  background:linear-gradient(135deg,var(--green) 0%,var(--gold) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-family:var(--serif);
+  font-size:clamp(18px,2.5vw,24px);
+  color:var(--text-2);
+  font-weight:400;
+  margin-bottom:40px;
+  opacity:0;
+  animation:fadeUp 0.8s 0.6s forwards;
+}
+.hero-meta{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:fadeUp 0.8s 0.8s forwards;
+}
+.hero-meta-item{
+  font-size:13px;
+  color:var(--text-3);
+  font-family:var(--mono);
+}
+.hero-meta-item strong{color:var(--green)}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:11px;
+  color:var(--text-3);
+  font-family:var(--mono);
+  letter-spacing:1px;
+  opacity:0;
+  animation:fadeUp 1s 1.2s forwards;
+}
+.scroll-hint::after{
+  content:'';
+  display:block;
+  width:1px;
+  height:32px;
+  background:linear-gradient(180deg,var(--green),transparent);
+  margin:8px auto 0;
+  animation:scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine{
+  0%,100%{transform:scaleY(0.3);opacity:0.3}
+  50%{transform:scaleY(1);opacity:1}
+}
+
+/* ===== SECTION ===== */
+section.module{
+  padding:100px 0;
+  position:relative;
+}
+.module-header{
+  margin-bottom:48px;
+}
+.module-num{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--green);
+  letter-spacing:3px;
+  margin-bottom:8px;
+  display:block;
+}
+.module-title{
+  font-family:var(--serif);
+  font-size:clamp(28px,4.5vw,40px);
+  font-weight:700;
+  line-height:1.2;
+  margin-bottom:8px;
+  color:var(--text-1);
+}
+.module-sub{
+  font-size:15px;
+  color:var(--text-3);
+  font-style:italic;
+}
+.module-divider{
+  width:48px;
+  height:2px;
+  background:linear-gradient(90deg,var(--green),transparent);
+  border:none;
+  margin:20px 0 32px;
+}
+
+/* ===== INSIGHT BANNER ===== */
+.insight{
+  background:linear-gradient(135deg,rgba(0,193,139,0.06),rgba(255,193,7,0.03));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px 36px;
+  margin:28px 0;
+  position:relative;
+  overflow:hidden;
+}
+.insight::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:4px;
+  height:100%;
+  background:linear-gradient(180deg,var(--green),var(--gold));
+}
+.insight-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:12px;
+  display:block;
+}
+.insight p{
+  color:var(--text-2);
+  margin-bottom:10px;
+  font-size:14.5px;
+}
+.insight strong{color:var(--green)}
+.insight .highlight{color:var(--gold);font-weight:600}
+
+/* ===== CARDS ===== */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin:24px 0;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:24px;
+  transition:all 0.3s;
+}
+.card:hover{
+  background:var(--surface-2);
+  border-color:var(--border-strong);
+  transform:translateY(-2px);
+}
+.card-icon{
+  width:40px;height:40px;
+  background:rgba(0,193,139,0.1);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:16px;
+  font-size:18px;
+}
+.card h4{
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:700;
+  color:var(--text-1);
+  margin-bottom:6px;
+}
+.card p{font-size:12.5px;color:var(--text-3);line-height:1.6}
+
+/* ===== TABLES ===== */
+.tbl{
+  width:100%;
+  border-collapse:collapse;
+  margin:20px 0;
+  font-size:13px;
+}
+.tbl th{
+  background:rgba(0,193,139,0.08);
+  color:var(--green);
+  font-weight:600;
+  text-align:left;
+  padding:12px 14px;
+  border-bottom:1px solid var(--border-strong);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+.tbl td{
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+  color:var(--text-2);
+}
+.tbl td strong{color:var(--text-1)}
+
+/* ===== METRICS ===== */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin:24px 0;
+}
+.metric{
+  background:linear-gradient(135deg,var(--surface),transparent);
+  border:1px solid var(--border);
+  border-left:3px solid var(--green);
+  border-radius:var(--radius-sm);
+  padding:24px;
+}
+.metric-num{
+  font-family:var(--serif);
+  font-size:48px;
+  font-weight:900;
+  color:var(--green);
+  line-height:1;
+  margin-bottom:8px;
+}
+.metric-label{font-size:13px;color:var(--text-1);font-weight:600}
+.metric-desc{font-size:11.5px;color:var(--text-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* ===== TAGS ===== */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tag{
+  font-size:11px;
+  padding:4px 12px;
+  border-radius:20px;
+  font-weight:500;
+  font-family:var(--mono);
+}
+.tag-g{background:rgba(0,193,139,0.12);color:var(--green);border:1px solid rgba(0,193,139,0.2)}
+.tag-y{background:rgba(255,193,7,0.1);color:var(--gold);border:1px solid rgba(255,193,7,0.2)}
+.tag-d{background:rgba(255,255,255,0.06);color:var(--text-2);border:1px solid var(--border)}
+
+/* ===== CALLOUT ===== */
+.callout{
+  background:rgba(255,193,7,0.04);
+  border:1px solid rgba(255,193,7,0.15);
+  border-left:3px solid var(--gold);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:20px 24px;
+  margin:20px 0;
+}
+.callout-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:1px;
+  color:var(--gold);
+  margin-bottom:6px;
+}
+.callout p{font-size:13.5px;color:var(--text-2)}
+.callout strong{color:var(--gold)}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding-left:28px;margin:20px 0}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:6px;top:4px;bottom:4px;
+  width:1px;
+  background:linear-gradient(180deg,var(--green) 0%,var(--gold) 100%);
+}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{
+  content:'';
+  position:absolute;
+  left:-26px;top:5px;
+  width:10px;height:10px;
+  background:var(--green);
+  border:2px solid var(--bg);
+  border-radius:50%;
+  box-shadow:0 0 0 1px var(--green);
+}
+.tl-week{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:600;
+  color:var(--green);
+  background:rgba(0,193,139,0.1);
+  padding:2px 10px;
+  border-radius:12px;
+  display:inline-block;
+  margin-bottom:4px;
+}
+.tl-content{font-size:13.5px;color:var(--text-2)}
+.tl-content strong{color:var(--text-1)}
+
+/* ===== CHANNEL GRID ===== */
+.channels{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.channel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:24px;
+}
+.channel h4{font-size:15px;font-weight:700;color:var(--text-1);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.channel p{font-size:12.5px;color:var(--text-3);margin-bottom:8px}
+.channel ul{padding-left:16px}
+.channel li{font-size:12.5px;color:var(--text-2);margin-bottom:4px}
+
+/* ===== TEXT ===== */
+p{margin-bottom:14px;color:var(--text-2);font-size:14.5px}
+p strong{color:var(--text-1)}
+h3{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--text-1);margin:32px 0 12px}
+h4{font-size:15px;font-weight:600;color:var(--text-1);margin:20px 0 8px}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.7s,transform 0.7s;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:80px 0 60px;
+  border-top:1px solid var(--border);
+  margin-top:60px;
+}
+footer .brand{
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:700;
+  color:var(--green);
+  margin-bottom:8px;
+}
+footer p{font-size:12px;color:var(--text-3)}
+
+@media(max-width:640px){
+  .card-grid,.metrics{grid-template-columns:1fr}
+  .channels{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">GTM Strategy · 2026</div>
+    <h1>360纳米Work<span class="accent">企业版</span></h1>
+    <p class="hero-sub">6个月GTM营销方案 — 从品类定义到标杆落地</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item"><strong>6</strong> 个月周期</span>
+      <span class="hero-meta-item"><strong>3</strong> 大北极星指标</span>
+      <span class="hero-meta-item"><strong>6</strong> 场活动</span>
+      <span class="hero-meta-item"><strong>6</strong> 渠道矩阵</span>
+      <span class="hero-meta-item">中小企业 <strong>50-500人</strong></span>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</div>
+
+<div class="container">
+
+<!-- ===== EXECUTIVE SUMMARY ===== -->
+<section class="module reveal">
+  <div class="insight">
+    <span class="insight-label">◆ 核心战略判断</span>
+    <p>不与钉钉千问办公、飞书Aily、企业微信WorkBuddy拼AI能力、拼生态覆盖 — 360不是营销见长的大厂，BAT有办公生态飞轮，<strong>硬碰是死路</strong>。</p>
+    <p><span class="highlight">品类重新定义：</span>不在"AI办公智能体"赛道和BAT竞争，在"企业AI落地服务"赛道，对手是收费几十万的咨询公司和SI集成商。从"卖工具"切换到"卖用得起的AI落地服务"。</p>
+    <p><span class="highlight">叙事框架：</span>超级个体 → 超级组织。不卖功能，卖进化。</p>
+  </div>
+</section>
+
+<!-- ===== MODULE 1 ===== -->
+<section class="module reveal" id="m1">
+  <div class="module-header">
+    <span class="module-num">01 / 市场判断</span>
+    <h2 class="module-title">竞品格局与品类重新定义</h2>
+    <p class="module-sub">为什么不打AI办公工具赛道，打AI落地服务赛道</p>
+  </div>
+  <hr class="module-divider">
+
+  <h3>BAT三家模式 — 我们不打</h3>
+  <table class="tbl">
+    <tr><th>对应关系</th><th>生态基础</th><th>局限</th></tr>
+    <tr><td><strong>钉钉 → 千问办公</strong></td><td>7亿用户</td><td>用户被钉钉锁定</td></tr>
+    <tr><td><strong>飞书 → Aily</strong></td><td>字节生态</td><td>用户被飞书锁定</td></tr>
+    <tr><td><strong>企微 → WorkBuddy</strong></td><td>微信关系链</td><td>用户被企微锁定</td></tr>
+  </table>
+  <p>三家BAT都是"办公生态+嵌入AI智能体"模式。<strong>无生态绑定反而是优势</strong> — 企业不用担心用一个AI就要换一套办公系统。</p>
+
+  <h3>三个差异化在此新品类里的角色</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h4>安全 = 信任底座</h4>
+      <p>不是功能卖点，是准入门槛。"大模型出错是说错话，智能体出错是干错事" — 原生安全、出厂内置</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h4>交付 = 服务承诺</h4>
+      <p>竞品交付"你用AI做出来的"，纳米Work交付"AI替你做出来的"。端到端任务交付而非辅助生成</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👷</div>
+      <h4>FDE = 核心产能</h4>
+      <p>不是售后支持，是核心商业模式。白帽子→FDE转型+城市合伙人=AI落地服务网络</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">💡 精妙点子</div>
+    <p><strong>"AI数字员工入职"</strong> — 企业不是在"买软件"，是在"招AI数字员工"。1亿Token=试用期工资360付；FDE=入职培训师；500+专家=AI员工简历库；城市合伙人=人才中介。企业对"招人"是刚需，对"买软件"有抵触。</p>
+  </div>
+</section>
+
+<!-- ===== MODULE 2 ===== -->
+<section class="module reveal" id="m2">
+  <div class="module-header">
+    <span class="module-num">02 / 北极星指标</span>
+    <h2 class="module-title">前6个月不看营收，看什么</h2>
+    <p class="module-sub">85%企业完成POC但只有15%持续运营 — 核心是进入那15%</p>
+  </div>
+  <hr class="module-divider">
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-num">30</div>
+      <div class="metric-label">标杆客户深度验证数（家）</div>
+      <div class="metric-desc">所有营销内容的素材来源。对应JD"搭建标杆客户分层运营体系"</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">10</div>
+      <div class="metric-label">可传播案例产出数（个）</div>
+      <div class="metric-desc">覆盖3个标杆行业。对应JD"打造标杆案例…为核心内容支撑"</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">↗</div>
+      <div class="metric-label">全链路转化率提升</div>
+      <div class="metric-desc">触达→深度试用。对应JD"拆解全链路转化漏斗，定位流失卡点"</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULE 3 ===== -->
+<section class="module reveal" id="m3">
+  <div class="module-header">
+    <span class="module-num">03 / 营销动作</span>
+    <h2 class="module-title">指标 → 营销动作映射</h2>
+    <p class="module-sub">每个北极星指标靠什么具体动作落地</p>
+  </div>
+  <hr class="module-divider">
+
+  <table class="tbl">
+    <tr><th>北极星指标</th><th>营销方式</th><th>具体动作</th></tr>
+    <tr><td rowspan="2"><strong>标杆客户30家</strong></td><td>渠道运营</td><td>从政企安全客户库(2万家)筛选500家→交叉销售→FDE驻场</td></tr>
+    <tr><td>活动运营</td><td>3场行业闭门沙龙(工程咨询/跨境电商/餐饮连锁)</td></tr>
+    <tr><td rowspan="2"><strong>案例产出10个</strong></td><td>内容运营</td><td>"3+1"内容包：短视频+图文+案例卡片+PPT页</td></tr>
+    <tr><td>新媒体运营</td><td>周鸿祎抖音栏目+小红书用户故事+视频号深度演示</td></tr>
+    <tr><td rowspan="3"><strong>全链路转化率</strong></td><td>增长运营</td><td>15分钟极速体验+场景化体验包+ROI计算器</td></tr>
+    <tr><td>社媒运营</td><td>3行业×知乎+公众号+小红书→AEO搜索占位</td></tr>
+    <tr><td>话题营销</td><td>3个争议性话题事件代替部分硬广</td></tr>
+  </table>
+
+  <h3>活动运营：6场活动，3种类型</h3>
+
+  <h4>3场行业闭门沙龙</h4>
+  <div class="tags">
+    <span class="tag tag-g">第5-6周 工程咨询·广州</span>
+    <span class="tag tag-g">第13-14周 跨境电商·深圳</span>
+    <span class="tag tag-g">第21-22周 餐饮连锁·北京</span>
+  </div>
+  <p>不是产品宣讲会，是<strong>"同行经验分享会"</strong>。标杆客户现身说法20分钟→AI实时演示15分钟→FDE带桌讨论30分钟→现场签约。<strong>案例降维</strong>：餐饮沙龙请新疆喀什早餐店老板(1家扩6家)现场讲 — 连早餐店老板都能用，你为什么不能。</p>
+
+  <h4>3个话题营销事件</h4>
+  <table class="tbl">
+    <tr><th>时间</th><th>话题事件</th><th>传播逻辑</th></tr>
+    <tr><td>第3-4周</td><td><strong>"AI替我干了5个人的活"</strong></td><td>周鸿祎抖音，1人=5人的冲击</td></tr>
+    <tr><td>第11-12周</td><td><strong>"早餐店老板用AI开了6家店"</strong></td><td>最不可能用AI的人用了AI</td></tr>
+    <tr><td>第19-20周</td><td><strong>"100城AI落地服务站同日开业"</strong></td><td>渠道招商+规模化亮相</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">💡 精妙点子</div>
+    <p><strong>"360 AI安全体检"</strong> — 向2万家政企客户发"AI安全体检报告"，免费检测AI使用风险。从"你在卖AI工具"变成"你在帮我查安全漏洞" — 心智完全不同。</p>
+  </div>
+
+  <h3>渠道宣发：每个平台打不同的牌</h3>
+  <div class="channels">
+    <div class="channel">
+      <h4>📕 小红书</h4>
+      <p><strong>方向：</strong>"普通人用AI搞钱"的故事</p>
+      <ul>
+        <li>"1人公司老板的一天：用AI管理6家门店"</li>
+        <li>"我用AI替代了3个外包：设计师+文案+法务"</li>
+        <li>5-10个KOC免费试用，真实体验发笔记</li>
+        <li>内容从客户痛点场景出发，先建场景案例库</li>
+      </ul>
+    </div>
+    <div class="channel">
+      <h4>🎵 抖音</h4>
+      <p><strong>方向：</strong>周鸿祎IP(1500万粉)+场景化短视频</p>
+      <ul>
+        <li>固定栏目"纳米Work实战周记"每周1条</li>
+        <li>场景演示："用AI 5分钟筛出行业情报"</li>
+        <li>用户故事60-90秒，前5秒抛冲击观点</li>
+      </ul>
+    </div>
+    <div class="channel">
+      <h4>📺 视频号</h4>
+      <p><strong>方向：</strong>B端决策者信息渠道</p>
+      <ul>
+        <li>360内部改造故事(30天改造360)</li>
+        <li>闭门沙龙精华剪辑</li>
+        <li>5-10分钟深度演示长视频</li>
+      </ul>
+    </div>
+    <div class="channel">
+      <h4>📝 公众号+知乎</h4>
+      <p><strong>方向：</strong>深度案例+AEO搜索占位</p>
+      <ul>
+        <li>公众号三层：信任层8篇+案例层10篇+选型层6篇</li>
+        <li>知乎：找10-20个高赞问题专业回答</li>
+        <li>目标：搜索"企业AI落地"时排前3</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">💡 精妙点子</div>
+    <p><strong>"100个行业的AI第一天"</strong> — 100个不同行业的小企业主第一次用AI的完整记录。100条短视频+100篇图文=半年内容弹药库。"早餐店老板都能用，你是不是也该试试？"</p>
+  </div>
+</section>
+
+<!-- ===== MODULE 4 ===== -->
+<section class="module reveal" id="m4">
+  <div class="module-header">
+    <span class="module-num">04 / 执行时间线</span>
+    <h2 class="module-title">6个月按周拆解</h2>
+    <p class="module-sub">三阶段递进：破冰→铺量→规模化</p>
+  </div>
+  <hr class="module-divider">
+
+  <h3 style="color:var(--green)">第一阶段（1-8周）破冰 — 拿标杆</h3>
+  <div class="timeline">
+    <div class="tl-item"><span class="tl-week">第1-2周</span><div class="tl-content">行业选型、客户画像分层、竞品battlecard、<strong>360内部改造故事首发内容包</strong></div></div>
+    <div class="tl-item"><span class="tl-week">第3-4周</span><div class="tl-content">话题事件1发布、筛选500家目标、落地页和ROI计算器上线</div></div>
+    <div class="tl-item"><span class="tl-week">第5-6周</span><div class="tl-content"><strong>第一场闭门沙龙(工程咨询·广州)</strong>，目标5-8家签约</div></div>
+    <div class="tl-item"><span class="tl-week">第7-8周</span><div class="tl-content">首批FDE驻场3-5家、<strong>AI安全体检报告上线</strong></div></div>
+  </div>
+
+  <h3 style="color:var(--green)">第二阶段（9-16周）铺量 — 产弹药</h3>
+  <div class="timeline">
+    <div class="tl-item"><span class="tl-week">第9-10周</span><div class="tl-content">案例3+1内容包产出、小红书启动、<strong>抖音栏目启动</strong></div></div>
+    <div class="tl-item"><span class="tl-week">第11-12周</span><div class="tl-content">话题事件2全平台发布、内容矩阵上线、场景化体验包上线</div></div>
+    <div class="tl-item"><span class="tl-week">第13-14周</span><div class="tl-content"><strong>第二场闭门沙龙(跨境电商·深圳)</strong></div></div>
+    <div class="tl-item"><span class="tl-week">第15-16周</span><div class="tl-content">第一批合伙人签约(5城市)、AEO启动</div></div>
+  </div>
+
+  <h3 style="color:var(--green)">第三阶段（17-24周）规模化 — 建体系</h3>
+  <div class="timeline">
+    <div class="tl-item"><span class="tl-week">第17-20周</span><div class="tl-content">客户分层运营体系、SOP沉淀、<strong>"100个行业AI第一天"启动</strong></div></div>
+    <div class="tl-item"><span class="tl-week">第19-20周</span><div class="tl-content"><strong>话题事件3"100城同日开业"</strong></div></div>
+    <div class="tl-item"><span class="tl-week">第21-22周</span><div class="tl-content"><strong>第三场闭门沙龙(餐饮·北京)</strong>、全国代理商联动</div></div>
+    <div class="tl-item"><span class="tl-week">第22-24周</span><div class="tl-content">6个月数据复盘、漏斗分析、策略调整</div></div>
+  </div>
+</section>
+
+<!-- ===== MODULE 5 ===== -->
+<section class="module reveal" id="m5">
+  <div class="module-header">
+    <span class="module-num">05 / 内部协同</span>
+    <h2 class="module-title">虚拟产品作战室四步法</h2>
+    <p class="module-sub">跨部门协同不是写流程图，是设计利益分配</p>
+  </div>
+  <hr class="module-divider">
+
+  <p>360有4亿安全卫士月活+4亿浏览器月活+1200万纳米AI搜索+2万家政企客户。但跨部门协同不是"建议导流"就能实现的 — <strong>没有利益分配就没有协同，这是大公司铁律</strong>。</p>
+
+  <div class="insight">
+    <span class="insight-label">◆ 协同四步法</span>
+    <p><strong>利益绑</strong> — 安全卫士/浏览器导流后Token消耗收入按30%分给导流部门；安全销售交叉销售按15%计入安全团队业绩</p>
+    <p><strong>看板通</strong> — 共享飞书/钉钉看板，所有部门看到纳米Work实时数据</p>
+    <p><strong>周会盯</strong> — 每周30分钟站会过5个数字</p>
+    <p><strong>绩效挂</strong> — 作战室成员季度绩效中20%与纳米Work指标挂钩</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">共识钩子</div>
+    <p><strong>用纳米Work营销纳米Work</strong> — 营销团队自己先用产品搭建营销智能体，自动生成社媒内容、分析用户反馈。<strong>让营销过程本身成为产品能力的活案例。</strong></p>
+  </div>
+</section>
+
+<!-- ===== MODULE 6 ===== -->
+<section class="module reveal" id="m6">
+  <div class="module-header">
+    <span class="module-num">06 / 交付分级</span>
+    <h2 class="module-title">交付场景分级与标准</h2>
+    <p class="module-sub">将抽象AI能力转化为可感知、可落地、可量化的商业提效价值</p>
+  </div>
+  <hr class="module-divider">
+
+  <table class="tbl">
+    <tr><th>级别</th><th>定义</th><th>代表场景</th><th>交付承诺</th></tr>
+    <tr><td><strong>A级</strong></td><td>可全自动交付</td><td>招投标监控、多语种内容生成、合规台账</td><td>7×24无人值守</td></tr>
+    <tr><td><strong>B级</strong></td><td>AI交付+人工审核</td><td>合同审查、营销方案生成、客户分析</td><td>AI完成80%，人工判断</td></tr>
+    <tr><td><strong>C级</strong></td><td>AI辅助+人主导</td><td>战略规划、创意决策</td><td>不做交付承诺</td></tr>
+  </table>
+
+  <h3>案例降维矩阵</h3>
+  <p>每个行业选"最不像会用AI的客户"做标杆 — 传播力远大于大企业案例：</p>
+  <div class="tags">
+    <span class="tag tag-g">工程咨询 → 传统造价事务所</span>
+    <span class="tag tag-g">跨境电商 → 夫妻出海店</span>
+    <span class="tag tag-g">餐饮连锁 → 新疆喀什早餐店老板</span>
+  </div>
+</section>
+
+<!-- ===== MODULE 7 ===== -->
+<section class="module reveal" id="m7">
+  <div class="module-header">
+    <span class="module-num">07 / 风险预判</span>
+    <h2 class="module-title">三个风险与护城河时效</h2>
+  </div>
+  <hr class="module-divider">
+
+  <table class="tbl">
+    <tr><th>风险</th><th>应对</th></tr>
+    <tr><td><strong>公测用户转化率低</strong><br><span style="font-size:11px;color:var(--text-3)">参考Tome：2500万用户年收入仅300万</span></td><td>画像分层，聚焦高价值种子</td></tr>
+    <tr><td><strong>FDE模式规模化天花板</strong></td><td>设计轻量级自服务路径</td></tr>
+    <tr><td><strong>竞品跟进安全/交付</strong></td><td>把FDE网络做成不可复制的组织能力</td></tr>
+  </table>
+
+  <h4>护城河时效</h4>
+  <table class="tbl">
+    <tr><th>卖点</th><th>深度</th><th>追赶周期</th><th>原因</th></tr>
+    <tr><td>安全基因</td><td>深</td><td>2-3年</td><td>20年攻防积累</td></tr>
+    <tr><td>端到端交付</td><td>中</td><td>1-2年</td><td>引擎可模仿，场景积累难复制</td></tr>
+    <tr><td><strong>FDE服务网络</strong></td><td><strong>最深</strong></td><td><strong>3-5年</strong></td><td>人力组织能力，非技术可替代</td></tr>
+  </table>
+</section>
+
+<!-- ===== CONSENSUS HOOKS ===== -->
+<section class="module reveal" id="hooks">
+  <div class="module-header">
+    <span class="module-num">◆ 共识钩子</span>
+    <h2 class="module-title">五个让面试官觉得"你懂我"的点</h2>
+  </div>
+  <hr class="module-divider">
+
+  <div class="card-grid" style="grid-template-columns:1fr">
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h4>1. "ToB不做大曝光，做信任飞轮"</h4>
+      <p>信任来自深度案例和行业口碑，不来自广告投放</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h4>2. "内容不从产品功能出发，从客户痛点场景出发"</h4>
+      <p>先建痛点场景案例库，再让AI基于知识库生产内容</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h4>3. "利益绑、看板通、周会盯、绩效挂"四步法</h4>
+      <p>四字口诀解决跨部门协同 — 模仿"15字诀"的记忆框架</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h4>4. "小红书运营由懂ToB营销+懂AI+懂小红书的复合型人才主导"</h4>
+      <p>不是新媒体运营岗，是懂ToB+懂AI+懂内容的复合型岗位</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h4>5. "用纳米Work营销纳米Work"</h4>
+      <p>营销团队自己先用产品，让营销过程成为产品能力的活案例</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="brand">360纳米Work企业版</div>
+  <p>为企业AI化而生 · 从超级个体到超级组织</p>
+  <p style="margin-top:8px;font-family:var(--mono);font-size:11px;opacity:0.5">ToB不做大曝光，做信任飞轮</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>

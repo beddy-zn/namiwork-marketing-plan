@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纳米Work企业版 · 六个月GTM营销方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1B3A6B; --blue-dark:#0F2847; --blue-light:#3B6FBA; --blue-bg:#E8F0FE;
+  --gold:#D4A020; --gold-bg:#FFF9E6;
+  --text:#1A1A2E; --text-2:#4A5568; --text-3:#8A94A6;
+  --bg:#FFFFFF; --bg-soft:#F7F9FC; --border:#E8ECF2; --border-2:#D1D9E6;
+  --radius:12px; --shadow:0 1px 3px rgba(27,58,107,.06),0 8px 24px rgba(27,58,107,.04);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--bg-soft);color:var(--text);line-height:1.8;font-size:15px;-webkit-font-smoothing:antialiased}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231B3A6B' stroke-opacity='0.025' stroke-width='1'%3E%3Cpath d='M0 200 Q400 50 800 200 T1600 200'/%3E%3Cpath d='M0 400 Q400 250 800 400 T1600 400'/%3E%3Ccircle cx='1200' cy='100' r='200'/%3E%3Ccircle cx='300' cy='600' r='150'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+/* Slide system */
+.slide{width:1280px;height:720px;margin:24px auto;background:var(--bg);border-radius:var(--radius);box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;padding:48px 56px}
+.slide-num{position:absolute;bottom:20px;right:32px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3)}
+.slide-bar{position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--blue-dark),var(--blue-light))}
+
+/* Nav top */
+.slide-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.slide-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--blue-dark)}
+.slide-logo svg{width:24px;height:24px}
+.slide-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:2px;font-weight:500}
+
+/* Typography */
+.s-title{font-size:32px;font-weight:800;color:var(--text);line-height:1.2;margin-bottom:6px}
+.s-sub{font-size:15px;color:var(--text-3);margin-bottom:20px}
+.s-divider{width:40px;height:3px;background:var(--blue);border-radius:2px;margin-bottom:24px}
+h3{font-size:18px;font-weight:700;color:var(--text);margin:24px 0 8px}
+h4{font-size:15px;font-weight:600;color:var(--text);margin:16px 0 6px}
+p{font-size:14px;color:var(--text-2);margin-bottom:8px}
+p strong{color:var(--text)}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+th{background:var(--blue-bg);color:var(--blue-dark);font-weight:600;text-align:left;padding:8px 10px;border-bottom:2px solid var(--blue)}
+td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text-2)}
+td strong{color:var(--text)}
+
+/* Cards */
+.cards{display:grid;gap:16px;margin:12px 0}
+.cards-3{grid-template-columns:repeat(3,1fr)}
+.cards-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--bg-soft);border:1px solid var(--border);border-radius:8px;padding:20px}
+.card-bar{border-top:3px solid var(--blue)}
+.card-bar-gold{border-top:3px solid var(--gold)}
+.card h4{margin:0 0 6px;font-size:14px}
+.card p{font-size:12.5px;color:var(--text-3);line-height:1.6}
+
+/* Insight */
+.insight{background:linear-gradient(135deg,var(--blue-bg),#F0F6FF);border:1px solid #C8D9F0;border-radius:10px;padding:20px 24px;margin:12px 0}
+.insight-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);font-weight:600;letter-spacing:1px;margin-bottom:8px}
+.insight p{color:var(--text-2);font-size:14px}
+
+/* Callout */
+.callout{background:var(--gold-bg);border:1px solid #F0E0A0;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:16px 20px;margin:12px 0}
+.callout-label{font-size:11px;font-weight:700;color:#8A6D00;letter-spacing:1px;margin-bottom:4px}
+.callout p{font-size:13.5px;color:var(--text-2)}
+
+/* Timeline */
+.tl{position:relative;padding-left:20px;margin:8px 0}
+.tl::before{content:'';position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:linear-gradient(180deg,var(--blue),var(--blue-light))}
+.tl-item{position:relative;margin-bottom:10px}
+.tl-item::before{content:'';position:absolute;left:-19px;top:5px;width:10px;height:10px;background:var(--blue);border:2px solid white;border-radius:50%;box-shadow:0 0 0 1px var(--blue)}
+.tl-week{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-bg);padding:2px 8px;border-radius:10px}
+.tl-text{font-size:13px;color:var(--text-2)}
+.tl-text strong{color:var(--text)}
+
+/* Tags */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag{font-size:11px;padding:3px 10px;border-radius:14px;font-weight:500}
+.tag-blue{background:var(--blue-bg);color:var(--blue-dark)}
+.tag-soft{background:var(--bg-soft);border:1px solid var(--border);color:var(--text-2)}
+
+/* Bullets */
+ul{padding-left:16px}
+ul li{font-size:13.5px;color:var(--text-2);margin-bottom:4px}
+ul li strong{color:var(--text)}
+
+/* Cover */
+.cover{background:linear-gradient(135deg,#0F2847 0%,#1B3A6B 50%,#3B6FBA 100%);color:white;justify-content:center;align-items:center;text-align:center}
+.cover::before{content:'';position:absolute;top:-30%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);border-radius:50%}
+.cover-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#FFC107;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:24px}
+.cover h1{font-size:52px;font-weight:900;margin-bottom:12px;letter-spacing:-1px}
+.cover h2{font-size:24px;font-weight:400;opacity:0.85;margin-bottom:32px}
+.cover-meta{display:flex;gap:24px;font-size:13px;opacity:0.6}
+.cover-bar{position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* Flex helpers */
+.row{display:flex;gap:16px}
+.col{flex:1}
+</style>
+</head>
+<body>
+
+<!-- ===== SLIDE 1: COVER ===== -->
+<div class="slide cover">
+  <svg width="60" height="60" viewBox="0 0 28 28" style="margin-bottom:20px"><defs><linearGradient id="hx" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F2847"/><stop offset="100%" stop-color="#3B6FBA"/></linearGradient></defs><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="white" opacity="0.15"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+  <div class="cover-badge">MARKETING STRATEGY · 2026</div>
+  <h1>纳米Work 企业版</h1>
+  <h2>六个月GTM营销方案</h2>
+  <p style="font-size:16px;opacity:0.7;max-width:600px;margin:0 auto 32px">不在办公入口与BAT争夺存量，以「企业AI落地服务」重新定义品类<br>用安全资产做信任杠杆，用FDE网络做交付壁垒</p>
+  <div class="cover-meta">
+    <span>2026年8月</span>
+    <span>·</span>
+    <span>30家持续运营客户</span>
+    <span>·</span>
+    <span>9个交付包</span>
+    <span>·</span>
+    <span>10个可传播案例</span>
+  </div>
+  <div class="cover-bar"></div>
+</div>
+
+<!-- ===== SLIDE 2: 核心战略判断 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">00 — 核心战略判断</span>
+  </div>
+  <div class="s-title">核心战略判断</div>
+  <div class="s-divider"></div>
+
+  <div class="row">
+    <div class="col">
+      <h3>一、判断</h3>
+      <p>纳米Work企业版不应该在「AI办公智能体」赛道正面竞争。钉钉、飞书、企微的护城河不是AI能力，是组织已经在里面办公——通讯录、审批流、文件、历史沉淀都在那儿。要求客户先离开一个每天都在用的系统，这是营销解决不了的问题。</p>
+    </div>
+    <div class="col">
+      <h3>二、打法</h3>
+      <p>把赛道重新定义为「企业AI落地服务」，对手换成收费几十万的咨询公司与SI集成商。在这条赛道上，360的三项资产——安全信任、端到端交付、FDE服务网络——是竞品短期内难以补齐的。</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3>三、六个月目标</h3>
+      <ul>
+        <li><strong>30家</strong>持续运营客户（交付后连续60天有真实业务调用）</li>
+        <li><strong>9个</strong>可复制交付包（3行业×3场景）</li>
+        <li><strong>10个</strong>可传播案例</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>四、核心风险</h3>
+      <p>交付跟不上。FDE产能是这套打法的关键瓶颈——营销跑在产能前面等于签了没人交付，口碑反噬比签不到单代价更大。方案设计逻辑：先拿标杆验证交付，再标准化复制，最后才放大。</p>
+    </div>
+  </div>
+  <div class="slide-num">02 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 3: 竞品格局 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">01 — 市场判断</span>
+  </div>
+  <div class="s-title">竞品格局：三家不打</div>
+  <div class="s-sub">为什么不在办公入口与BAT正面竞争</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>对应关系</th><th>生态基础</th><th>为什么正面打不赢</th></tr>
+    <tr><td><strong>钉钉 → 千问办公</strong></td><td>7亿用户</td><td>AI是既有办公生态上的叠加层，迁移成本由组织习惯构成，不由功能差距构成</td></tr>
+    <tr><td><strong>飞书 → Aily</strong></td><td>字节生态</td><td>同上；且其目标客群与我方安全存量客户重合度低</td></tr>
+    <tr><td><strong>企微 → WorkBuddy</strong></td><td>微信关系链</td><td>关系链是壁垒本身，正面进攻等于要求客户换一套每天都在用的系统</td></tr>
+  </table>
+
+  <div class="insight" style="margin-top:16px">
+    <div class="insight-label">品类重新定义</div>
+    <p>从「卖工具」切换到「卖用得起的AI落地服务」。在工具赛道上客户会逐条比功能，在落地服务赛道上客户比的是「谁能把这件事做成」。叙事框架：超级个体→超级组织。</p>
+  </div>
+  <div class="slide-num">03 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 4: 三项护城河 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">01 — 品类定义</span>
+  </div>
+  <div class="s-title">三项护城河与真实边界</div>
+  <div class="s-divider"></div>
+
+  <div class="cards cards-3">
+    <div class="card card-bar">
+      <h4>🔒 安全 = 信任底座</h4>
+      <p>不是功能卖点，是准入门槛。360累计捕获60个境外APT组织，3800+安全专家，覆盖2万家政企客户。63.6%的AI供应商未披露第三方数据转发。</p>
+      <p style="margin-top:8px;font-size:11px;color:var(--text-3);border-top:1px dashed var(--border);padding-top:8px">边界：安全是门槛不是卖点——客户因为信任才愿意试，但留不留得住看交付。</p>
+    </div>
+    <div class="card card-bar">
+      <h4>📦 交付 = 服务承诺</h4>
+      <p>竞品交付「你用AI做出来的」，360交付「AI替你做出来的」。纳米1314任务引擎：输入目标→拆解→调度→执行→成品。内置500+岗位专家。</p>
+      <p style="margin-top:8px;font-size:11px;color:var(--text-3);border-top:1px dashed var(--border);padding-top:8px">边界：只对A级场景承诺端到端交付，B级标注AI初稿+人工审核，不overpromise。</p>
+    </div>
+    <div class="card card-bar card-bar-gold">
+      <h4>👷 FDE = 核心产能</h4>
+      <p>不是售后支持，是核心商业模式。白帽子→FDE转型+城市合伙人=网格式AI落地服务网络。三级认证：训练工匠→AI业务专家→AI咨询架构师。</p>
+      <p style="margin-top:8px;font-size:11px;color:var(--text-3);border-top:1px dashed var(--border);padding-top:8px">边界：人力密集型交付，规模化天花板明显。设计轻量级自服务路径做分流。</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">营销切口</div>
+    <p><strong>「AI数字员工入职」</strong>——企业不是在「买软件」，是在「招AI数字员工」。1亿Token=试用期工资360付；FDE=入职培训师；500+专家=AI员工简历库；城市合伙人=人才中介。</p>
+  </div>
+  <div class="slide-num">04 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 5: 目标客户与漏斗 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">02 — 目标客户</span>
+  </div>
+  <div class="s-title">把安全客户变成AI客户</div>
+  <div class="s-sub">存量安全客户库转化：已付费、已信任、已有采购关系</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>漏斗层级</th><th>六个月目标</th><th>判定标准</th><th>责任方</th></tr>
+    <tr><td><strong>可触达池</strong></td><td>500家</td><td>员工50-500人 / 近12个月有续费 / 属三个beachhead行业</td><td>安全侧客户经理</td></tr>
+    <tr><td><strong>完成场景诊断</strong></td><td>150家</td><td>完成20题标准问卷并产出诊断报告，客户侧有明确对接人</td><td>市场+渠道</td></tr>
+    <tr><td><strong>进入交付</strong></td><td>45家</td><td>签署协议并启动配置，含10家第一阶段共创客户</td><td>FDE</td></tr>
+    <tr><td><strong>持续运营（北极星）</strong></td><td>30家</td><td>交付后连续60天有真实业务调用，且至少一个场景进入日常流程</td><td>市场+FDE</td></tr>
+  </table>
+
+  <p style="margin-top:12px">不做产品推销，做免费「AI场景诊断」。从"你在卖AI工具"变成"你在帮我看AI怎么用安全"。</p>
+  <div class="slide-num">05 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 6: Beachhead行业 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">02 — Beachhead行业</span>
+  </div>
+  <div class="s-title">三个Beachhead行业建议</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>行业</th><th>选择理由</th><th>切入场景</th><th>为什么先做这个场景</th></tr>
+    <tr><td><strong>工程咨询/招投标</strong></td><td>信息量大、规则明确，ROI可用中标金额直接衡量</td><td>招投标线索监控与匹配</td><td>效果可用金额量化，不需要争论</td></tr>
+    <tr><td><strong>跨境电商</strong></td><td>多语种跨时区，天然需要7×24；AI接受度最高</td><td>多语种内容与客服响应</td><td>客户已有AI使用习惯，教育成本最低</td></tr>
+    <tr><td><strong>连锁服务业</strong></td><td>管理半径大、单店决策快、故事性强</td><td>多门店日报与异常预警</td><td>单店可试点，失败成本低，成功易复制</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">案例降维策略</div>
+    <p>每个行业选"最不像会用AI的客户"做标杆——连早餐店老板都能用起来，说明这件事不需要技术门槛。</p>
+  </div>
+  <div class="slide-num">06 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 7: 指标体系 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">03 — 指标体系</span>
+  </div>
+  <div class="s-title">指标体系</div>
+  <div class="s-sub">北极星 + 过程指标 + 防作弊定义</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>层级</th><th>指标</th><th>六个月目标</th><th>责任</th></tr>
+    <tr style="background:var(--blue-bg)"><td><strong>北极星</strong></td><td><strong>持续运营客户数</strong></td><td><strong>30家</strong></td><td>市场+FDE</td></tr>
+    <tr><td>过程</td><td>场景诊断完成数</td><td>150家</td><td>市场+渠道</td></tr>
+    <tr><td>过程</td><td>可复制交付包产出数</td><td>9个（3行业×3场景）</td><td>FDE+产品</td></tr>
+    <tr><td>过程</td><td>可传播案例产出数</td><td>10个（含3支深度视频）</td><td>市场</td></tr>
+  </table>
+
+  <p style="margin-top:12px">为什么不看营收：行业数据85%企业完成POC但只有15%持续运营。前6个月核心是进入那15%，有了持续运营客户，营收是自然结果。</p>
+  <div class="slide-num">07 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 8: 执行路线总览 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">04 — 执行路线</span>
+  </div>
+  <div class="s-title">六个月执行路线</div>
+  <div class="s-sub">三阶段，每阶段只认一个关键结果，并预设退出条件</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>阶段</th><th>周期</th><th>核心命题</th><th>关键结果</th></tr>
+    <tr><td><strong>立信</strong></td><td>1-30天</td><td>把品类讲清楚，把首批客户找出来</td><td>10家共创客户签署并启动</td></tr>
+    <tr><td><strong>验证</strong></td><td>31-90天</td><td>跑通「场景→交付→复用」最小闭环</td><td>3行业各产出1个可复制交付包</td></tr>
+    <tr><td><strong>放大</strong></td><td>91-180天</td><td>把验证过的东西装进渠道</td><td>30家持续运营+城市网络启动</td></tr>
+  </table>
+
+  <div class="cards cards-3" style="margin-top:16px">
+    <div class="card">
+      <h4 style="color:var(--blue)">立信 · 退出条件</h4>
+      <p>如果前30天签不到5家共创，说明品类叙事或客户筛选标准需调整，不进入下一阶段。</p>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--blue)">验证 · 退出条件</h4>
+      <p>如果交付包无法标准化（每个客户都要从头定制），说明产品成熟度不够，暂停放大。</p>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--blue)">放大 · 退出条件</h4>
+      <p>如果未认证FDE开始独立交付且出现质量事故，暂停该城市运营。</p>
+    </div>
+  </div>
+  <div class="slide-num">08 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 9: 第一阶段立信 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">04 — 第一阶段</span>
+  </div>
+  <div class="s-title">第一阶段 · 1-30天 · 立信</div>
+  <div class="s-sub">关键结果：10家共创客户签署协议</div>
+  <div class="s-divider"></div>
+
+  <ul>
+    <li><strong>品类叙事定稿并全员对齐</strong>——销售、渠道、客服口径统一</li>
+    <li><strong>存量客户激活</strong>——安全侧客户经理按三条件筛出500家可触达池，主题是免费AI场景诊断而非产品介绍</li>
+    <li><strong>诊断工具包上线</strong>——20题标准问卷+报告模板+ROI测算器，渠道与FDE拿了就能用</li>
+    <li><strong>10家共创客户签署协议</strong>——给予优先功能、联合署名、创始价格，换取可公开的数据与故事使用权</li>
+    <li><strong>360内部改造故事首发</strong>——周鸿祎账号发布"用AI改造360的30天"，讲述CEO超级助理的真实经历</li>
+  </ul>
+
+  <div class="insight">
+    <div class="insight-label">退出条件</div>
+    <p>如果前30天签不到5家共创，说明品类叙事或客户筛选标准需要调整，不进入下一阶段。</p>
+  </div>
+  <div class="slide-num">09 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 10: 第二阶段验证 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">04 — 第二阶段</span>
+  </div>
+  <div class="s-title">第二阶段 · 31-90天 · 验证</div>
+  <div class="s-sub">关键结果：3行业各产出1个可复制交付包</div>
+  <div class="s-divider"></div>
+
+  <ul>
+    <li><strong>交付包标准化</strong>——每行业沉淀「场景定义/配置模板/验收标准/常见问题/交付话术」作战手册</li>
+    <li><strong>3场老板级行业闭门沙龙</strong>——客户现身说法20分钟+真实数据现场演示15分钟+FDE分桌诊断30分钟+当场预约</li>
+    <li><strong>案例生产线</strong>——每个标杆产出短视频+图文+数据页三件套，统一标准化，禁止销售各自制作</li>
+    <li><strong>多媒体宣发启动</strong>——周鸿祎抖音"纳米Work实战周记"每周1条；小红书"用户故事"号每周2-3条；视频号深度演示</li>
+  </ul>
+
+  <div class="insight">
+    <div class="insight-label">退出条件</div>
+    <p>如果交付包无法标准化（每个客户都要从头定制），说明产品成熟度不够，暂停放大。</p>
+  </div>
+  <div class="slide-num">10 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 11: 第三阶段放大 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">04 — 第三阶段</span>
+  </div>
+  <div class="s-title">第三阶段 · 91-180天 · 放大</div>
+  <div class="s-sub">关键结果：30家持续运营+城市网络启动</div>
+  <div class="s-divider"></div>
+
+  <ul>
+    <li><strong>渠道合伙人放大</strong>——授权与认证等级绑定，未认证不得独立交付，防止交付质量崩塌反噬品牌</li>
+    <li><strong>城市服务站滚动深化</strong>——不追求同日开业的公关声量，按FDE产能开城；每城须有1名认证FDE与1个本地标杆</li>
+    <li><strong>内容矩阵规模化</strong>——同步做AEO/GEO，让AI搜索引擎能检索到我方行业方法论</li>
+    <li><strong>老客扩展</strong>——对持续运营客户启动第二场景销售，这是六个月后收入曲线的起点</li>
+  </ul>
+
+  <div class="insight">
+    <div class="insight-label">退出条件</div>
+    <p>如果未认证FDE开始独立交付且出现质量事故，暂停该城市运营。</p>
+  </div>
+  <div class="slide-num">11 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 12: 内容与渠道 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">05 — 内容与渠道</span>
+  </div>
+  <div class="s-title">四层内容资产</div>
+  <div class="s-sub">ToB不做大曝光，做信任飞轮</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>层级</th><th>内容</th><th>作用</th><th>渠道</th></tr>
+    <tr><td><strong>认知</strong></td><td>品类定义长文、趋势报告、争议话题短视频</td><td>建立新品类认知</td><td>知乎/公众号/抖音</td></tr>
+    <tr><td><strong>信任</strong></td><td>安全白皮书、合规说明、客户证言</td><td>跨过「敢不敢用」</td><td>官网/方案附件/沙龙</td></tr>
+    <tr><td><strong>决策</strong></td><td>行业方案、ROI测算器、交付标准</td><td>支撑采购与内部立项</td><td>销售/渠道/一对一</td></tr>
+    <tr><td><strong>使用</strong></td><td>SOP、操作手册、场景模板库</td><td>降低客户不会用导致的流失</td><td>客户群/FDE交付</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">用纳米Work营销纳米Work</div>
+    <p>营销团队自己先用产品搭建营销智能体——自动生成社媒内容、分析用户反馈、生成案例报告。让营销过程本身成为产品能力的证明。</p>
+  </div>
+  <div class="slide-num">12 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 13: 风险与组织 ===== -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo"><svg viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>纳米Work 企业版</div>
+    <span class="slide-tag">06/07 — 风险与组织</span>
+  </div>
+  <div class="s-title">风险应对与组织保障</div>
+  <div class="s-divider"></div>
+
+  <table>
+    <tr><th>风险</th><th>应对策略</th></tr>
+    <tr><td><strong>免费Token羊毛党</strong></td><td>设置合格试用门槛：完成场景诊断问卷+指定企业侧对接人方可激活</td></tr>
+    <tr><td><strong>FDE产能跟不上</strong></td><td>把「FDE人均并行交付数」设为市场部放量的红绿灯，低于阈值暂停获客，转投内容与培训</td></tr>
+    <tr><td><strong>品类教育失败</strong></td><td>为一线配备拒绝比价应答脚本，把问题重构为「您是想找一个工具，还是想找一个能把这件事落地的人」</td></tr>
+  </table>
+
+  <h3 style="margin-top:16px">组织保障：市场部角色变化</h3>
+  <p>卖工具模式下产出是线索；卖落地服务模式下产出是可复制的交付资产与客户共识。考核从MQL数量转向交付包与案例产出，且必须与FDE共背北极星。</p>
+  <div class="slide-num">13 / 14</div>
+  <div class="slide-bar"></div>
+</div>
+
+<!-- ===== SLIDE 14: 结语 ===== -->
+<div class="slide cover">
+  <svg width="48" height="48" viewBox="0 0 28 28" style="margin-bottom:20px"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="white" opacity="0.15"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+  <h1 style="font-size:36px">结语</h1>
+  <p style="font-size:20px;opacity:0.85;max-width:680px;margin:24px auto 0;line-height:1.8">卖工具模式下，市场部的产出是线索；<br>卖落地服务模式下，产出是可复制的交付资产与客户共识。</p>
+  <p style="font-size:18px;opacity:0.7;max-width:680px;margin:24px auto 0;line-height:1.8">纳米Work的营销不是把AI能力包装成功能列表卖出去，<br>而是把360的安全基因、交付能力、FDE服务网络打包成"用得起的AI落地服务"<br>——让企业老板从"不敢用AI"到"有人在帮我落地AI"。</p>
+  <div style="margin-top:48px;opacity:0.5">
+    <p style="font-size:16px;color:white;opacity:0.8">纳米Work 企业版</p>
+    <p style="font-size:13px">为企业AI化而生 · 从超级个体到超级组织</p>
+  </div>
+  <div class="cover-bar"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="hx" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F2847"/><stop offset="100%" stop-color="#3B6FBA"/></linearGradient></defs></svg>
+
+</body>
+</html>

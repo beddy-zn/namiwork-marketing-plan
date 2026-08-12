@@ -9,21 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0A1F14;
-  --bg-2:#0D2B1C;
-  --bg-3:#103828;
-  --surface:rgba(255,255,255,0.04);
-  --surface-2:rgba(255,255,255,0.07);
-  --border:rgba(0,193,139,0.15);
-  --border-strong:rgba(0,193,139,0.35);
-  --text-1:#F0F5F2;
-  --text-2:#A8C4B8;
-  --text-3:#5C7A6E;
-  --green:#00C18B;
-  --green-dim:#006B3C;
-  --gold:#FFC107;
-  --gold-dim:#B8860B;
-  --red:#FF6B6B;
+  --bg:#FFFFFF;
+  --bg-soft:#F7F9FC;
+  --surface:rgba(27,58,107,0.03);
+  --surface-2:rgba(27,58,107,0.06);
+  --border:rgba(27,58,107,0.10);
+  --border-strong:rgba(27,58,107,0.22);
+  --text-1:#1A1A2E;
+  --text-2:#4A5568;
+  --text-3:#8A94A6;
+  --blue:#1B3A6B;
+  --blue-dark:#0F2847;
+  --blue-light:#3B6FBA;
+  --blue-bg:#E8F0FE;
+  --gold:#D4A020;
+  --gold-light:#FFF8E1;
   --radius:16px;
   --radius-sm:10px;
   --serif:'Noto Serif SC',Georgia,serif;
@@ -44,17 +44,17 @@ body{
   overflow-x:hidden;
 }
 
-/* Grain overlay */
+/* Subtle background lines */
 body::before{
   content:'';
   position:fixed;
   inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231B3A6B' stroke-opacity='0.03' stroke-width='1'%3E%3Cpath d='M0 200 Q400 50 800 200 T1600 200'/%3E%3Cpath d='M0 400 Q400 250 800 400 T1600 400'/%3E%3Ccircle cx='1200' cy='100' r='200'/%3E%3Ccircle cx='1200' cy='100' r='300'/%3E%3Ccircle cx='300' cy='600' r='150'/%3E%3C/g%3E%3C/svg%3E");
   pointer-events:none;
-  z-index:9999;
+  z-index:0;
 }
 
-/* Ambient glow */
+/* Ambient blue glow */
 body::after{
   content:'';
   position:fixed;
@@ -62,7 +62,7 @@ body::after{
   right:-20%;
   width:80vw;
   height:80vw;
-  background:radial-gradient(circle,rgba(0,193,139,0.06) 0%,transparent 60%);
+  background:radial-gradient(circle,rgba(27,58,107,0.04) 0%,transparent 60%);
   pointer-events:none;
   z-index:-1;
 }
@@ -84,7 +84,7 @@ body::after{
   left:-20%;
   width:140vw;
   height:100vh;
-  background:radial-gradient(ellipse,rgba(0,193,139,0.08) 0%,transparent 50%);
+  background:radial-gradient(ellipse,rgba(27,58,107,0.04) 0%,transparent 50%);
 }
 .hero-inner{position:relative;z-index:1}
 .hero-eyebrow{
@@ -94,7 +94,7 @@ body::after{
   font-family:var(--mono);
   font-size:11px;
   letter-spacing:2px;
-  color:var(--green);
+  color:var(--blue);
   text-transform:uppercase;
   margin-bottom:28px;
   opacity:0;
@@ -104,7 +104,7 @@ body::after{
   content:'';
   width:24px;
   height:1px;
-  background:var(--green);
+  background:var(--blue);
 }
 .hero h1{
   font-family:var(--serif);
@@ -117,7 +117,7 @@ body::after{
   animation:fadeUp 0.8s 0.4s forwards;
 }
 .hero h1 .accent{
-  background:linear-gradient(135deg,var(--green) 0%,var(--gold) 100%);
+  background:linear-gradient(135deg,var(--blue) 0%,var(--gold) 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
@@ -143,7 +143,7 @@ body::after{
   color:var(--text-3);
   font-family:var(--mono);
 }
-.hero-meta-item strong{color:var(--green)}
+.hero-meta-item strong{color:var(--blue)}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(24px)}
@@ -168,7 +168,7 @@ body::after{
   display:block;
   width:1px;
   height:32px;
-  background:linear-gradient(180deg,var(--green),transparent);
+  background:linear-gradient(180deg,var(--blue),transparent);
   margin:8px auto 0;
   animation:scrollLine 2s ease-in-out infinite;
 }
@@ -188,7 +188,7 @@ section.module{
 .module-num{
   font-family:var(--mono);
   font-size:12px;
-  color:var(--green);
+  color:var(--blue);
   letter-spacing:3px;
   margin-bottom:8px;
   display:block;
@@ -209,14 +209,14 @@ section.module{
 .module-divider{
   width:48px;
   height:2px;
-  background:linear-gradient(90deg,var(--green),transparent);
+  background:linear-gradient(90deg,var(--blue),transparent);
   border:none;
   margin:20px 0 32px;
 }
 
 /* ===== INSIGHT BANNER ===== */
 .insight{
-  background:linear-gradient(135deg,rgba(0,193,139,0.06),rgba(255,193,7,0.03));
+  background:linear-gradient(135deg,rgba(27,58,107,0.04),rgba(212,160,32,0.02));
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:32px 36px;
@@ -230,7 +230,7 @@ section.module{
   top:0;left:0;
   width:4px;
   height:100%;
-  background:linear-gradient(180deg,var(--green),var(--gold));
+  background:linear-gradient(180deg,var(--blue),var(--gold));
 }
 .insight-label{
   font-family:var(--mono);
@@ -246,7 +246,7 @@ section.module{
   margin-bottom:10px;
   font-size:14.5px;
 }
-.insight strong{color:var(--green)}
+.insight strong{color:var(--blue)}
 .insight .highlight{color:var(--gold);font-weight:600}
 
 /* ===== CARDS ===== */
@@ -270,7 +270,7 @@ section.module{
 }
 .card-icon{
   width:40px;height:40px;
-  background:rgba(0,193,139,0.1);
+  background:rgba(27,58,107,0.08);
   border-radius:10px;
   display:flex;
   align-items:center;
@@ -295,8 +295,8 @@ section.module{
   font-size:13px;
 }
 .tbl th{
-  background:rgba(0,193,139,0.08);
-  color:var(--green);
+  background:rgba(27,58,107,0.06);
+  color:var(--blue);
   font-weight:600;
   text-align:left;
   padding:12px 14px;
@@ -322,7 +322,7 @@ section.module{
 .metric{
   background:linear-gradient(135deg,var(--surface),transparent);
   border:1px solid var(--border);
-  border-left:3px solid var(--green);
+  border-left:3px solid var(--blue);
   border-radius:var(--radius-sm);
   padding:24px;
 }
@@ -330,7 +330,7 @@ section.module{
   font-family:var(--serif);
   font-size:48px;
   font-weight:900;
-  color:var(--green);
+  color:var(--blue);
   line-height:1;
   margin-bottom:8px;
 }
@@ -346,14 +346,14 @@ section.module{
   font-weight:500;
   font-family:var(--mono);
 }
-.tag-g{background:rgba(0,193,139,0.12);color:var(--green);border:1px solid rgba(0,193,139,0.2)}
-.tag-y{background:rgba(255,193,7,0.1);color:var(--gold);border:1px solid rgba(255,193,7,0.2)}
-.tag-d{background:rgba(255,255,255,0.06);color:var(--text-2);border:1px solid var(--border)}
+.tag-g{background:var(--blue-bg);color:var(--blue-dark);border:1px solid rgba(27,58,107,0.15)}
+.tag-y{background:var(--gold-light);color:var(--gold);border:1px solid rgba(212,160,32,0.2)}
+.tag-d{background:var(--bg-soft);color:var(--text-2);border:1px solid var(--border)}
 
 /* ===== CALLOUT ===== */
 .callout{
-  background:rgba(255,193,7,0.04);
-  border:1px solid rgba(255,193,7,0.15);
+  background:rgba(212,160,32,0.04);
+  border:1px solid rgba(212,160,32,0.12);
   border-left:3px solid var(--gold);
   border-radius:0 var(--radius-sm) var(--radius-sm) 0;
   padding:20px 24px;
@@ -376,7 +376,7 @@ section.module{
   position:absolute;
   left:6px;top:4px;bottom:4px;
   width:1px;
-  background:linear-gradient(180deg,var(--green) 0%,var(--gold) 100%);
+  background:linear-gradient(180deg,var(--blue) 0%,var(--gold) 100%);
 }
 .tl-item{position:relative;margin-bottom:18px}
 .tl-item::before{
@@ -384,17 +384,17 @@ section.module{
   position:absolute;
   left:-26px;top:5px;
   width:10px;height:10px;
-  background:var(--green);
+  background:var(--blue);
   border:2px solid var(--bg);
   border-radius:50%;
-  box-shadow:0 0 0 1px var(--green);
+  box-shadow:0 0 0 1px var(--blue);
 }
 .tl-week{
   font-family:var(--mono);
   font-size:11px;
   font-weight:600;
-  color:var(--green);
-  background:rgba(0,193,139,0.1);
+  color:var(--blue);
+  background:rgba(27,58,107,0.08);
   padding:2px 10px;
   border-radius:12px;
   display:inline-block;
@@ -441,7 +441,7 @@ footer .brand{
   font-family:var(--serif);
   font-size:20px;
   font-weight:700;
-  color:var(--green);
+  color:var(--blue);
   margin-bottom:8px;
 }
 footer p{font-size:12px;color:var(--text-3)}
@@ -457,7 +457,7 @@ footer p{font-size:12px;color:var(--text-3)}
 <!-- ===== HERO ===== -->
 <div class="hero">
   <div class="container hero-inner">
-    <div class="hero-eyebrow">GTM Strategy · 2026</div>
+    <div class="hero-eyebrow"><svg width="20" height="20" viewBox="0 0 28 28"><defs><linearGradient id="hx" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F2847"/><stop offset="100%" stop-color="#3B6FBA"/></linearGradient></defs><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg> GTM Strategy · 2026</div>
     <h1>360纳米Work<span class="accent">企业版</span></h1>
     <p class="hero-sub">6个月GTM营销方案 — 从品类定义到标杆落地</p>
     <div class="hero-meta">
@@ -653,7 +653,7 @@ footer p{font-size:12px;color:var(--text-3)}
   </div>
   <hr class="module-divider">
 
-  <h3 style="color:var(--green)">第一阶段（1-8周）破冰 — 拿标杆</h3>
+  <h3 style="color:var(--blue)">第一阶段（1-8周）破冰 — 拿标杆</h3>
   <div class="timeline">
     <div class="tl-item"><span class="tl-week">第1-2周</span><div class="tl-content">行业选型、客户画像分层、竞品battlecard、<strong>360内部改造故事首发内容包</strong></div></div>
     <div class="tl-item"><span class="tl-week">第3-4周</span><div class="tl-content">话题事件1发布、筛选500家目标、落地页和ROI计算器上线</div></div>
@@ -661,7 +661,7 @@ footer p{font-size:12px;color:var(--text-3)}
     <div class="tl-item"><span class="tl-week">第7-8周</span><div class="tl-content">首批FDE驻场3-5家、<strong>AI安全体检报告上线</strong></div></div>
   </div>
 
-  <h3 style="color:var(--green)">第二阶段（9-16周）铺量 — 产弹药</h3>
+  <h3 style="color:var(--blue)">第二阶段（9-16周）铺量 — 产弹药</h3>
   <div class="timeline">
     <div class="tl-item"><span class="tl-week">第9-10周</span><div class="tl-content">案例3+1内容包产出、小红书启动、<strong>抖音栏目启动</strong></div></div>
     <div class="tl-item"><span class="tl-week">第11-12周</span><div class="tl-content">话题事件2全平台发布、内容矩阵上线、场景化体验包上线</div></div>
@@ -669,7 +669,7 @@ footer p{font-size:12px;color:var(--text-3)}
     <div class="tl-item"><span class="tl-week">第15-16周</span><div class="tl-content">第一批合伙人签约(5城市)、AEO启动</div></div>
   </div>
 
-  <h3 style="color:var(--green)">第三阶段（17-24周）规模化 — 建体系</h3>
+  <h3 style="color:var(--blue)">第三阶段（17-24周）规模化 — 建体系</h3>
   <div class="timeline">
     <div class="tl-item"><span class="tl-week">第17-20周</span><div class="tl-content">客户分层运营体系、SOP沉淀、<strong>"100个行业AI第一天"启动</strong></div></div>
     <div class="tl-item"><span class="tl-week">第19-20周</span><div class="tl-content"><strong>话题事件3"100城同日开业"</strong></div></div>
@@ -761,23 +761,23 @@ footer p{font-size:12px;color:var(--text-3)}
   <hr class="module-divider">
 
   <div class="card-grid" style="grid-template-columns:1fr">
-    <div class="card" style="border-left:3px solid var(--green)">
+    <div class="card" style="border-left:3px solid var(--blue)">
       <h4>1. "ToB不做大曝光，做信任飞轮"</h4>
       <p>信任来自深度案例和行业口碑，不来自广告投放</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--green)">
+    <div class="card" style="border-left:3px solid var(--blue)">
       <h4>2. "内容不从产品功能出发，从客户痛点场景出发"</h4>
       <p>先建痛点场景案例库，再让AI基于知识库生产内容</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--green)">
+    <div class="card" style="border-left:3px solid var(--blue)">
       <h4>3. "利益绑、看板通、周会盯、绩效挂"四步法</h4>
       <p>四字口诀解决跨部门协同 — 模仿"15字诀"的记忆框架</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--green)">
+    <div class="card" style="border-left:3px solid var(--blue)">
       <h4>4. "小红书运营由懂ToB营销+懂AI+懂小红书的复合型人才主导"</h4>
       <p>不是新媒体运营岗，是懂ToB+懂AI+懂内容的复合型岗位</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--green)">
+    <div class="card" style="border-left:3px solid var(--blue)">
       <h4>5. "用纳米Work营销纳米Work"</h4>
       <p>营销团队自己先用产品，让营销过程成为产品能力的活案例</p>
     </div>
@@ -788,7 +788,10 @@ footer p{font-size:12px;color:var(--text-3)}
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="brand">360纳米Work企业版</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px">
+    <svg width="24" height="24" viewBox="0 0 28 28"><polygon points="14,1 26,8 26,20 14,27 2,20 2,8" fill="url(#hx)"/><path d="M9 9 L9 19 M19 9 L19 19 M9 9 L19 19" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <span class="brand">纳米Work 企业版</span>
+  </div>
   <p>为企业AI化而生 · 从超级个体到超级组织</p>
   <p style="margin-top:8px;font-family:var(--mono);font-size:11px;opacity:0.5">ToB不做大曝光，做信任飞轮</p>
 </footer>
